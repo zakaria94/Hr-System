@@ -1,0 +1,27 @@
+﻿@model AppUsers
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<form asp-controller="Users" asp-action="Delete" class="form-group">
+
+    <label asp-for="Id">Id</label>
+    <input type="text" class="form-control" asp-for="Id" readonly />
+    <br />
+
+    <label asp-for="UserName">Department Code</label>
+    <input type="text" class="form-control" asp-for="UserName" readonly />
+    <br />
+
+    <label asp-for="Email">Department Code</label>
+    <input type="text" class="form-control" asp-for="Email" readonly />
+    <br />
+
+    <center>
+        <input type="submit" class="btn btn-primary" value="Delete" />
+    </center>
+
+</form>

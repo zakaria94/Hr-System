@@ -1,0 +1,24 @@
+﻿@model Template.BL.Models.EditRoleVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<form asp-action="Delete" asp-controller="Roles" class="form-group">
+
+    <label asp-for="Id">Id</label>
+    <input type="text" class="form-control" asp-for="Id" readonly />
+    <br />
+
+    <label asp-for="Name">Role Name</label>
+    <input type="text" class="form-control" asp-for="Name" readonly />
+   
+    <br />
+
+    <center>
+        <input type="submit" class="btn btn-primary" value="Delete" />
+    </center>
+
+</form>

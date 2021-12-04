@@ -1,0 +1,25 @@
+﻿@model Template.BL.Models.EditRoleVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create" asp-controller="Roles" class="form-group">
+
+    <label asp-for="Name">Role Name</label>
+    <input type="text" class="form-control" asp-for="Name" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+    <br />
+
+    <center>
+        <input type="submit" class="btn btn-primary" value="Save" />
+    </center>
+
+</form>
+
+@section MicrosoftValidationUser{
+    <script src="~/plugins/jquery-validation/jquery.validate.js"></script>
+    <script src="~/plugins/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

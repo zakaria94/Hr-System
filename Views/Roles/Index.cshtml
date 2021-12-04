@@ -1,0 +1,173 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section DataTableStyle {
+
+    <!-- JQuery DataTable Css -->
+    <link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css"
+          rel="stylesheet" />
+    <!-- BootStrap Select -->
+    <link href="~/plugins/bootstrap-select/css/bootstrap-select.css"
+          rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="~/css/style.css" rel="stylesheet" />
+}
+
+<center>
+    <h2>Welcome To Roles</h2>
+</center>
+
+<a asp-action="create" asp-controller="Roles" class="btn btn-primary">Create New Role</a>
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <center>
+                    <h2>Roles</h2>
+                </center>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);">@Localizer["Action"]</a></li>
+                            <li><a href="javascript:void(0);">@Localizer["Another action"]</a></li>
+                            <li><a href="javascript:void(0);">@Localizer["Something else here"]</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class= "table table-bordered table-striped table-hover text-center js-basic-example dataTable">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Role Name</th>
+                                <th class="text-center">@Localizer["Actions"]</th>
+                                @*<th class="text-center">Details</th>
+                                    <th class="text-center">Update</th>
+                                    <th class="text-center">Delete</th>*@
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th class="text-center">Id</th>
+                                <th class="text-center">Role Name</th>
+                                <th class="text-center">@Localizer["Actions"]</th>
+                                @*<th class="text-center">Details</th>
+                                    <th class="text-center">Update</th>
+                                    <th class="text-center">Delete</th>*@
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                @Localizer["Actions"]
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                                <li>
+                                                    <a asp-controller="Roles"
+                                                       asp-action="Details"
+                                                       asp-route-id="@item.Id">@Localizer["Details"]</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-controller="Roles"
+                                                       asp-action="Update"
+                                                       asp-route-id="@item.Id">@Localizer["Update"]</a>
+                                                </li>
+                                                <li>
+                                                    <a asp-controller="Roles"
+                                                       asp-action="Delete"
+                                                       asp-route-id="@item.Id">@Localizer["Delete"]</a>
+                                                </li>
+                                                @*<li role="separator" class="divider"></li>
+                                                    <li><a href="#">Separated link</a></li>*@
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    @*<td>
+                                            <a asp-controller="Department"
+                                               asp-action="Details"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-success">Details</a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Department"
+                                               asp-action="Edit"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-warning">Update</a>
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Department"
+                                               asp-action="Delete"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-danger">Delete</a>
+                                        </td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section DataTableScripts {
+
+    <script src="~/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="~/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="~/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script>
+        $(function () {
+            $(".js-basic-example").DataTable({
+                responsive: true,
+                paging: true,
+                pageLength: 5,
+                bSort: true,
+                bFilter: true,
+                bLengthChange: false,
+                //bInfo: false,
+                lengthMenu: [
+                    [5, 10, 25, 50, -1],
+                    [5, 10, 25, 50, "All"],
+                ],
+            });
+
+            //Exportable table
+            var table = $(".js-basic-example").DataTable();
+
+            new $.fn.dataTable.Buttons(table, {
+                buttons: ["copy", "excel", "pdf", "csv", "print"],
+            });
+
+            table
+                .buttons()
+                .container()
+                .appendTo($(".col-sm-6:eq(0)", table.table().container()));
+        });
+
+    </script>
+}

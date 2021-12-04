@@ -1,0 +1,59 @@
+﻿@model Template.BL.Models.EmployeeVM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<a asp-controller="Employee" asp-action="Index" class="btn btn-primary">Back To Data</a>
+<a asp-controller="Employee" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+
+<center>
+    <h2>Are You Sure To Delete</h2>
+</center>
+
+
+
+
+<form asp-controller="Employee" asp-action="Delete" class="form-group">
+
+    <input type="hidden" class="form-control" asp-for="Id" disabled /><br /><br />
+
+
+    <label asp-for="Name">Name</label>
+    <input type="text" class="form-control" asp-for="Name" disabled /><br /><br />
+
+
+    <label asp-for="Email">Email</label>
+    <input type="email" class="form-control" asp-for="Email" disabled /><br /><br />
+
+
+    <label asp-for="Salary">Salary</label>
+    <input type="text" class="form-control" asp-for="Salary"disabled /><br /><br />
+
+
+    <label asp-for="HireDate">HireDate</label>
+    <input type="date" class="form-control" asp-for="HireDate" disabled /><br /><br />
+
+    <label asp-for="DepartmentId">Department</label>
+    <select asp-for="DepartmentId" asp-items="@(SelectList)ViewBag.DepartmentList" disabled>
+        <option value="">Choeese Department</option>
+    </select><br /><br />
+
+
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" asp-for="IsActive" class="custom-control-input" disabled>
+        <label class="custom-control-label" asp-for="IsActive">Is Active</label>
+    </div><br /><br />
+
+    <label asp-for="Notes">Notes</label>
+    <textarea asp-for="Notes" rows="10" cols="30" class="form-control" disabled></textarea><br /><br />
+
+    <center>
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </center>
+
+</form>
+
+
+

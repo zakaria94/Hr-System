@@ -1,0 +1,28 @@
+﻿@model Template.BL.Models.MailVM;
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+    <h2>Send Mail</h2>
+</center>
+
+<br />
+<center>
+    <h1 style="color:red">@TempData["Msg"]</h1>
+</center>
+<br />
+<form asp-controller="Mail" asp-action="SendMail" method="post" class="form-group">
+
+    <input type="text" asp-for="Title" class="form-control" /><br />
+
+    <textarea asp-for="Message" rows="4" placeholder=" Enter Your Message " class="form-control"></textarea><br />
+
+    <center>
+
+        <input type="submit" value="Send" class="btn btn-primary"/>
+         <input type="reset" value="Reset" class="btn btn-btn-warning"/>
+
+    </center>
+
+</form>
